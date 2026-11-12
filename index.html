@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Calculate an estimated GPA and CGPA for Foundation in Arts or Foundation in Science using course grades and credits.">
+  <title>GPA Check | School of Foundation Studies</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar"><div class="container topbar-inner">
+    <div class="brand"><div class="logo" id="schoolBrandLogo"><span id="schoolLogoFallback" aria-hidden="true">SFS</span><img id="schoolLogoImage" src="assets/school-logo.png" alt="School of Foundation Studies logo" hidden></div><div><span class="brand-name">GPA Check</span><span class="brand-caption">School of Foundation Studies</span></div></div>
+    <div class="topbar-right"><span class="top-indicator" aria-hidden="true"></span> 4.00 grading system</div>
+  </div></div>
+  <header class="hero"><div class="container hero-inner">
+    <div class="hero-copy"><div class="overline">Academic self-check</div><h1>Your grades.<br>Your progress.</h1><p>Select your grades, calculate GPA and CGPA, and track your progress in one place.</p>
+      <div class="hero-flags"><span class="hero-flag">Foundation in Arts</span><span class="hero-flag">Foundation in Science</span><span class="hero-flag">3 semesters</span></div><a class="hero-mobile-link" href="#grades-title">Start entering grades <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="hero-graphic" aria-hidden="true"><div class="hero-graphic-card"><span>Grading scale</span><strong>4.00</strong><div class="bars"><i></i><i></i><i></i></div></div></div>
+  </div></header>
+  <main class="container">
+    <section class="panel setup-card" aria-label="Programme and optional student information">
+      <div class="setup-main"><div class="setup-content"><label class="setup-label" for="programme">Select your programme</label><div class="select-wrap"><select id="programme"><option value="FIA">Foundation in Arts (FIA)</option><option value="FIS">Foundation in Science (FIS)</option></select></div><div class="setup-hint">Your subjects and credit hours will appear automatically.</div></div>
+        <div class="setup-side"><div class="setup-divider"></div><div class="setup-credit"><span class="setup-credit-icon" aria-hidden="true">50</span><div><strong>50 total credits</strong><small>Foundation programme</small></div></div></div>
+      </div>
+      <details class="profile-details" id="studentDetails"><summary>Add student details (optional)</summary><div class="profile-fields"><div class="field"><label for="studentName">Student name</label><input id="studentName" maxlength="100" autocomplete="name" placeholder="Full name"></div><div class="field"><label for="studentId">Student ID</label><input id="studentId" maxlength="40" autocomplete="off" placeholder="Student ID"></div></div></details>
+    </section>
+    <div class="section-header"><div><span class="section-eyebrow">Your overview</span><h2>Academic performance</h2><p>Updated instantly as you select your grades.</p></div><span id="resultPill" class="pill" aria-live="polite">No grades entered</span></div>
+    <section class="stats" aria-label="Calculated results">
+      <article class="summary-card primary"><h3 id="activeSemesterLabel">Semester 1 GPA</h3><div class="number" id="statGpa" aria-live="polite">—</div><p id="statGpaDesc">Select grades to calculate</p></article>
+      <article class="summary-card"><h3>Cumulative CGPA</h3><div class="number" id="statCgpa" aria-live="polite">—</div><p id="statCgpaDesc">Across entered semesters</p></article>
+      <article class="summary-card"><h3>Graded credits</h3><div class="number" id="statCredits">0 <span class="total-credits">/ 50</span></div><p>Across the whole programme</p><div class="mini-progress" aria-hidden="true"><span id="overallProgressFill"></span></div></article>
+      <article class="summary-card"><h3>Semester progress</h3><div class="progress-number"><div class="number" id="semesterProgress">0%</div></div><p>Credits graded in this semester</p><div class="mini-progress" aria-hidden="true"><span id="semesterProgressFill"></span></div></article>
+    </section>
+    <div class="work-grid">
+      <section class="panel editor" aria-labelledby="grades-title">
+        <div class="editor-head"><div class="heading-row"><div><h2 id="grades-title">Enter course grades</h2><p class="subtext">Choose a grade for each course. Leave a grade blank if it is not available yet.</p></div><button type="button" id="clearSemesterBtn" class="ghost-btn" title="Clear grades for the selected semester">Clear semester</button></div>
+          <div class="semester-tabs" id="semesterTabs" role="tablist" aria-label="Choose semester"></div>
+        </div>
+        <div class="elective-box hidden" id="electiveBox"><div class="elective-heading"><span class="elective-icon" aria-hidden="true">*</span><h3>Choose your Semester 2 elective</h3></div><p>Select one 3-credit elective. Only the selected course contributes to your GPA.</p><div class="elective-field"><label class="hidden" for="electiveSelect">Semester 2 elective</label><select id="electiveSelect"></select></div></div>
+        <div id="entryNotice" class="notice hidden" role="status"></div>
+        <div class="entry-meta"><strong id="courseCount">Course results</strong><span id="creditRequirement">20 credits expected</span><span class="count-pill" id="gradeCountPill">0 / 0 graded</span><span class="meta-right">* elective</span></div>
+        <div class="table-wrap"><table class="course-table"><thead><tr><th style="min-width:212px">Course</th><th>Credits</th><th>Grade</th><th>Weighted points</th><th>Status</th></tr></thead><tbody id="coursesBody"></tbody></table></div>
+        <p class="footnote hidden" id="bahasaNote">Bahasa Kebangsaan is listed without a credit value and is not included in this GPA/CGPA calculation.</p>
+        <div class="calculation-strip"><div class="formula"><strong>How this semester is calculated</strong><span id="calculationText">Total weighted points ÷ graded credits</span></div><div class="gpa" id="calculationGpa">—<small>SEMESTER GPA</small></div></div>
+        <div class="editor-bottom"><span>Switch semesters to enter or review results.</span><button type="button" class="next-btn" id="nextSemesterBtn">Next semester →</button></div>
+      </section>
+      <aside class="right-stack" aria-label="Academic overview and grading reference">
+        <section class="side-panel"><h2>Semester breakdown</h2><p class="intro">Track your credit completion and GPA across semesters.</p><div id="progressRows"></div></section>
+        <section class="side-panel"><h2>Grading reference</h2><p class="intro">Based on the supplied Foundation 4.00-point scale.</p>
+          <details class="grade-reference-details" id="gradeReferenceDetails" open><summary>View the full grading scale</summary>
+          <table class="legend-table"><thead><tr><th>Grade</th><th>Points</th><th>Status</th></tr></thead><tbody>
+            <tr><td>A+</td><td>4.00</td><td>Excellent</td></tr><tr><td>A</td><td>4.00</td><td>Excellent</td></tr><tr><td>A−</td><td>3.67</td><td>Excellent</td></tr><tr><td>B+</td><td>3.33</td><td>Credit</td></tr><tr><td>B</td><td>3.00</td><td>Credit</td></tr><tr><td>B−</td><td>2.67</td><td>Credit</td></tr><tr><td>C+</td><td>2.33</td><td>Pass</td></tr><tr><td>C</td><td>2.00</td><td>Pass</td></tr><tr><td>F</td><td>0.00</td><td>Fail</td></tr>
+          </tbody></table></details>
+        </section>
+        <section class="info-panel"><h2>Good to know</h2><p><strong>GPA</strong> uses grades and credits within a semester. <strong>CGPA</strong> uses all entered semester results.</p><p>Blank grades are excluded; F grades count as 0.00 points. Estimates are for self-checking and are not official results.</p></section>
+      </aside>
+    </div>
+    <section class="actions" aria-label="Save report and clear results"><div class="actions-description"><strong>Your academic report</strong><small>Review your results in a clean A4 layout before saving.</small></div><button type="button" class="btn primary" id="printBtn">Preview / Save PDF <span aria-hidden="true">↗</span></button><button type="button" class="btn danger" id="resetBtn">Clear all results</button></section>
+  </main>
+  <div id="mobileQuickBar" class="mobile-quick-bar" aria-label="Quick GPA results and report action">
+    <div class="mobile-quick-results"><span>Sem GPA <strong id="mobileGpa">—</strong></span><span>CGPA <strong id="mobileCgpa">—</strong></span></div>
+    <button type="button" id="mobilePdfBtn" class="mobile-pdf-btn">Save PDF <span aria-hidden="true">↗</span></button>
+  </div>
+  <footer class="footer container"><div class="footer-line"></div>GPA Check is an academic self-check tool. Refer to official university records for verified grades and special academic rules.</footer>
+  <dialog id="reportDialog" class="report-dialog" aria-labelledby="reportDialogTitle">
+    <div class="dialog-head"><div><span class="dialog-kicker">REPORT PREVIEW</span><h2 id="reportDialogTitle">GPA &amp; CGPA Report</h2><p>Review your report, then choose Save as PDF in the print window.</p></div><button id="closeReportBtn" class="dialog-close" type="button" aria-label="Close report preview">×</button></div>
+    <div class="dialog-scroll"><div class="report-paper" id="reportPreview"></div></div>
+    <div class="dialog-footer"><span>A4 page format · Unofficial academic self-check</span><div><button type="button" id="cancelReportBtn" class="btn">Close preview</button><button type="button" id="confirmPrintBtn" class="btn secondary">Print / Save as PDF</button></div></div>
+  </dialog>
+  <div class="print-report" id="printReport" aria-hidden="true"></div>
+<script src="script.js"></script>
+</body>
+</html>
