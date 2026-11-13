@@ -136,6 +136,7 @@
     const previewLogo=schoolLogoReady?`<img src="${SCHOOL_LOGO_PATH}" alt="School logo">`:'SFS';
     const complete=all.credits===totalCredits;
     let html=`<div class="report-content">
+       <div class="report-watermark" aria-hidden="true">UNOFFICIAL</div>
        <div class="report-brand"><div class="report-brand-left"><div class="report-logo">${previewLogo}</div><div><div class="report-brand-title">School of Foundation Studies</div><div class="report-brand-sub">Foundation Programme · Academic self-check</div></div></div><span class="report-badge">UNOFFICIAL REPORT</span></div>
        <div class="report-title-area"><div><div class="report-kicker">Student performance</div><h1 class="report-title">GPA &amp; CGPA Report</h1><p class="report-subtitle">A grade-based summary across your foundation semesters</p></div><div class="report-generated">Prepared on<br><strong>${escapeHtml(formattedDate)}</strong></div></div>
        <div class="report-identity"><div class="report-identity-item"><label>Student name</label><strong>${escapeHtml(state.studentName.trim()||'Not provided')}</strong></div><div class="report-identity-item"><label>Student ID</label><strong>${escapeHtml(state.studentId.trim()||'Not provided')}</strong></div><div class="report-identity-item"><label>Programme</label><strong>${escapeHtml(PLANS[state.programme].name)}</strong></div></div>
