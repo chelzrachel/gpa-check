@@ -1,0 +1,77 @@
+/* GPA Check — Glassmorphism edition. Layered over the existing responsive stylesheet. */
+@media screen {
+  :root { --glass-ink:#1d3556; --glass-border:rgba(255,255,255,.78); --glass-shadow:0 18px 44px rgba(40,71,120,.11); }
+  html { scroll-padding-top:20px; }
+  body { background:radial-gradient(circle at 8% 25%,rgba(129,163,234,.24),transparent 35%),radial-gradient(circle at 92% 52%,rgba(198,159,228,.22),transparent 34%),linear-gradient(125deg,#edf4fb 0%,#f5f8fe 48%,#ecf2fc 100%); background-attachment:fixed; color:var(--glass-ink); }
+  .topbar { background:rgba(16,36,70,.95);border-bottom:1px solid rgba(255,255,255,.17); }
+  .hero { background:radial-gradient(circle at 78% 0%,rgba(121,159,224,.30),transparent 45%),radial-gradient(circle at 38% 110%,rgba(228,107,111,.17),transparent 55%),linear-gradient(115deg,#102a50,#264a7d); }
+  .hero:before { border-color:rgba(255,255,255,.18); }
+  .hero-inner { min-height:268px; padding-bottom:73px; }
+  .hero h1 { font-weight:800;letter-spacing:-2.5px; }
+  .hero p { color:#e1eafb; }
+  .hero-flag { background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);color:#eef5ff;border-radius:999px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px); }
+  .hero-graphic-card { background:linear-gradient(135deg,rgba(236,247,255,.24),rgba(138,181,230,.08));border:1px solid rgba(255,255,255,.37);border-radius:23px;box-shadow:0 20px 50px rgba(10,23,58,.20);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px); }
+  .panel,.summary-card,.side-panel,.info-panel,.actions { background:linear-gradient(135deg,rgba(255,255,255,.86),rgba(255,255,255,.63));border:1px solid var(--glass-border);border-radius:20px;box-shadow:var(--glass-shadow),inset 0 1px 0 rgba(255,255,255,.95);backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%); }
+  .setup-card { margin-top:-38px;box-shadow:0 22px 52px rgba(29,56,104,.17); }
+  .select-wrap select,.field input,.elective-field select,.grade-select { background:rgba(255,255,255,.87);border:1px solid rgba(155,179,211,.56);border-radius:12px;color:#1c3659;box-shadow:0 2px 6px rgba(32,61,109,.04); }
+  .select-wrap select { min-height:49px; }
+  .section-header h2 { color:#203b62; }
+  .pill { background:rgba(255,255,255,.66);border:1px solid rgba(255,255,255,.92);color:#45668f;box-shadow:0 4px 12px rgba(72,105,157,.07); }
+  .stats { gap:15px; }
+  .summary-card { min-height:156px; }
+  .summary-card h3 { color:#587291; }
+  .summary-card .number { color:#203c65; }
+  .summary-card.primary { background:radial-gradient(circle at 105% -25%,rgba(139,174,242,.38),transparent 65%),linear-gradient(140deg,rgba(24,54,105,.98),rgba(47,86,148,.96));border-color:rgba(136,172,230,.54);box-shadow:0 17px 37px rgba(26,65,121,.21); }
+  .summary-card.primary h3,.summary-card.primary p { color:#e1ebff; }
+  .summary-card.primary .number { color:#fff; }
+  .summary-card:nth-child(2) { background:linear-gradient(135deg,rgba(255,255,255,.88),rgba(230,238,255,.68)); }
+  .mini-progress span,.progress-fill { background:linear-gradient(90deg,#ff9f82,#f47759); }
+  .editor { overflow:hidden; }
+  .editor-head { border-bottom-color:rgba(137,169,209,.22); }
+  .semester-tabs { gap:10px; }
+  .tab { background:rgba(238,245,255,.70);border:1px solid rgba(168,191,223,.58);border-radius:13px;transition:transform .18s ease,box-shadow .18s ease; }
+  .tab:hover:not(.active) { background:rgba(255,255,255,.94);transform:translateY(-1px);box-shadow:0 5px 14px rgba(53,88,140,.09); }
+  .tab.active { background:linear-gradient(120deg,#1e4277,#32609b);border:1px solid rgba(107,147,210,.6);box-shadow:0 8px 20px rgba(37,79,143,.20);color:white; }
+  .tab.active .tabsmall { color:#dce9fc; }
+  .elective-box { background:linear-gradient(125deg,rgba(255,247,232,.90),rgba(255,255,255,.70));border:1px solid rgba(241,177,131,.55);border-radius:15px; }
+  .course-table th { background:rgba(226,238,251,.62); }
+  .course-table tbody tr:hover { background:rgba(236,245,255,.48); }
+  .course-table tbody tr.graded-row { background:rgba(236,254,247,.44); }
+  .grade-select { min-height:44px; }
+  .calculation-strip { background:linear-gradient(110deg,rgba(220,235,251,.75),rgba(246,250,255,.67));border:1px solid rgba(153,184,222,.45);border-radius:15px; }
+  .ghost-btn,.next-btn { background:rgba(255,255,255,.70);border:1px solid rgba(156,179,211,.46);border-radius:10px; }
+  .info-panel { background:linear-gradient(135deg,rgba(221,238,253,.86),rgba(246,251,255,.66)); }
+  .btn { border-radius:11px;min-height:45px; }
+  .btn.primary,.mobile-pdf-btn { background:linear-gradient(115deg,#ff9274,#ed684e);border-color:rgba(238,112,80,.76);box-shadow:0 7px 19px rgba(232,105,76,.22); }
+  .report-dialog { background:rgba(239,246,254,.96);border:1px solid rgba(255,255,255,.79);box-shadow:0 30px 100px rgba(17,39,72,.32); }
+  .report-dialog::backdrop { background:rgba(16,31,58,.68);backdrop-filter:blur(7px); }
+  .report-dialog .report-paper { background:#fff;backdrop-filter:none; }
+  .logo #schoolLogoFallback { font-size:13px;letter-spacing:.01em; }
+  .logo [hidden] { display:none!important; }
+  .logo img { background:#fff; }
+  .report-watermark { position:absolute;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-31deg);font:900 75px/1 Arial,sans-serif;letter-spacing:.08em;white-space:nowrap;color:rgba(64,85,108,.16);pointer-events:none;user-select:none;z-index:0; }
+  .report-content { position:relative; }
+  .report-content>:not(.report-watermark) { position:relative;z-index:1; }
+  @media(max-width:650px) {
+    .container { width:calc(100% - 28px); }
+    .hero-inner { min-height:0;padding-bottom:67px; }
+    .hero h1 { letter-spacing:-1.6px; }
+    .summary-card { padding:16px 14px;border-radius:17px; }
+    .semester-tabs { gap:7px; }
+    .tab { min-height:62px;border-radius:12px; }
+    .course-table tbody tr { background:linear-gradient(135deg,rgba(255,255,255,.89),rgba(246,250,255,.75));border:1px solid rgba(255,255,255,.95);border-radius:15px;box-shadow:0 7px 17px rgba(46,82,133,.07); }
+    .course-table tbody tr.graded-row { background:linear-gradient(135deg,rgba(251,255,253,.90),rgba(234,251,246,.72));border-color:rgba(128,193,165,.50); }
+    .grade-select { min-height:49px;font-size:16px; }
+    .mobile-quick-bar { background:rgba(246,250,255,.90);border:1px solid rgba(255,255,255,.9);border-bottom:0;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 -8px 28px rgba(32,56,100,.14); }
+    .dialog-scroll .report-watermark { font-size:clamp(30px,10vw,52px); }
+  }
+  @media (prefers-reduced-motion:reduce) {.tab,.btn,.next-btn { transition:none!important; }}
+  @supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))) {
+    .panel,.summary-card:not(.primary),.side-panel,.info-panel,.actions { background:#f9fbff; }
+  }
+}
+@media print {
+  .print-report .report-watermark { position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%) rotate(-31deg)!important;font:900 91px/1 Arial,sans-serif!important;letter-spacing:.08em;color:rgba(64,85,108,.16)!important;z-index:0!important;pointer-events:none!important;-webkit-print-color-adjust:exact;print-color-adjust:exact; }
+  .print-report .report-content { position:relative; }
+  .print-report .report-content>:not(.report-watermark) { position:relative;z-index:1; }
+}
